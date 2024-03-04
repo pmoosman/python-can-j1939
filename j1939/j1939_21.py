@@ -393,9 +393,9 @@ class J1939_21:
             return
 
         if self._rcv_buffer[buffer_hash]['next_seq_num'] != sequence_number:
-            logger.warning(f"packet error. out-of-sequence pgn: {self._rcv_buffer[buffer_hash]['pgn']} "
-                            f"required: {self._rcv_buffer[buffer_hash]['next_seq_num']}  "
-                            f"received: {sequence_number}")
+            logger.info(f"packet error. out-of-sequence pgn: {self._rcv_buffer[buffer_hash]['pgn']} "
+                        f"required: {self._rcv_buffer[buffer_hash]['next_seq_num']}  "
+                        f"received: {sequence_number}")
             del self._rcv_buffer[buffer_hash]
             self.__job_thread_wakeup()
             return
